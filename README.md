@@ -37,4 +37,4 @@ The returned FileInfo object contains all the exif properties:
     DateandTimeDigitized       : 2/18/2020 4:57:02 PM
     ...
 
-Dates are [datetime] objects.
+Dates are [datetime] objects. Tested on MacOS with PowerShell 7.0.0-rc3
