@@ -1,4 +1,4 @@
-# ExifWrapper-PowerShellModule
+# Exif Wrapper - PowerShell Core Module
 
 This module is a simple wraper built to pass filename to exif binary utility and parse the result into FileInfo properties.
 
