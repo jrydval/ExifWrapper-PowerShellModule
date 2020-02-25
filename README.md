@@ -4,7 +4,7 @@ Import module:
 
     Import-Module ./ExifWrapper.psm1
 
-Use function Get-exif:
+Use function Get-Exif:
 
     Get-Exif [-Path] "filename.jpg" | Select-Object *
     Get-Exif [-File] (Get-Item filename.jpg) | Select-Object *
