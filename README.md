@@ -27,5 +27,6 @@ The returned FileInfo object contains all the exif properties:
     ExifVersion                : Unknown Exif Version
     DateandTimeOriginal        : 2/18/2020 4:57:02 PM
     DateandTimeDigitized       : 2/18/2020 4:57:02 PM
+    ...
 
 Dates are [datetime] objects.
