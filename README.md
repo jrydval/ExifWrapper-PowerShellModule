@@ -23,13 +23,13 @@ The returned FileInfo object contains all the exif properties:
 
     Manufacturer               : Apple
     Model                      : iPhone 11 Pro Max
-    X-Resolution               : 72
-    Y-Resolution               : 72
+    XResolution                : 72
+    YResolution                : 72
     ResolutionUnit             : Inch
     Software                   : 13.3.1
     DateandTime                : 2/18/2020 4:57:02 PM
     ExposureTime               : 1/799 sec.
-    F-Number                   : f/2.0
+    FNumber                    : f/2.0
     ExposureProgram            : Normal program
     ISOSpeedRatings            : 20
     ExifVersion                : Unknown Exif Version

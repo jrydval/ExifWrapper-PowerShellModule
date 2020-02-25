@@ -46,7 +46,7 @@ function Get-Exif {
         
         (exif -m $Path) | ForEach-Object {
             $name, $value = $_ -split "`t"
-            $name = $name -replace '\s', '' -replace'[\(\)]', ''   
+            $name = $name -replace'[\(\)\s\-]', ''   
 
             if($name.startsWith("DateandTime")) {
                 $value = Get-Date ($value -replace "^(.*?):(.*?):(.*?) ", "`$1.`$2.`$3 ")
