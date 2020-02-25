@@ -1,4 +1,7 @@
 # ExifWrapper-PowerShellModule
+
+This module is a simple wraper built to pass filename to exif binary utility and parse the result into FileInfo properties.
+
 Install exif binary (using port on MacOS or another SW package manager):
 
     sudo port install exif
