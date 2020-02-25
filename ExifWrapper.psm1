@@ -25,6 +25,7 @@ function Get-Exif {
 
     begin { 
         Write-Debug "Get-Exif Begin"
+        Get-Command -Name "exif" -ErrorAction Stop
      }
 
     end { 

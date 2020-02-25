@@ -38,3 +38,8 @@ The returned FileInfo object contains all the exif properties:
     ...
 
 Dates are [datetime] objects. Tested on MacOS with PowerShell 7.0.0-rc3
+
+## Usage examples
+
+    > (Get-Item ./filename.jpeg | Get-Exif).DateandTimeOriginal.ToString("yyyy-MM-dd")
+    2020-02-18
