@@ -1,8 +1,13 @@
 # ExifWrapper-PowerShellModule
+Install exif binary (using port on MacOS or another SW package manager):
+
+    sudo port install exif
+
 
 Import module:
 
     Import-Module ./ExifWrapper.psm1
+    
 
 Use function Get-Exif:
 
