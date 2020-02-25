@@ -1,15 +1,18 @@
 # ExifWrapper-PowerShellModule
 
 Import module:
+
     Import-Module ./ExifWrapper.psm1
 
 Use function Get-exif:
+
     Get-Exif [-Path] "filename.jpg" | Select-Object *
     Get-Exif [-File] (Get-Item filename.jpg) | Select-Object *
     "filename.jpg" | Get-Exif | Select-Object *
     Get-Item filename.jpg | Get-Exif | Select-Object *
 
 The returned FileInfo object contains all the exif properties:
+
     Manufacturer               : Apple
     Model                      : iPhone 11 Pro Max
     X-Resolution               : 72
