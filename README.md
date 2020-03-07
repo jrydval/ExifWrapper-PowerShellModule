@@ -14,12 +14,12 @@ Import module:
 
 Use function Get-Exif:
 
-    Get-Exif [-Path] "filename.jpg" | Select-Object *
-    Get-Exif [-File] (Get-Item filename.jpg) | Select-Object *
-    "filename.jpg" | Get-Exif | Select-Object *
-    Get-Item filename.jpg | Get-Exif | Select-Object *
+    Get-Exif [-Path] "filename.jpg" | Select-Object Name -ExpandProperty Exif
+    Get-Exif [-File] (Get-Item filename.jpg) | Select-Object Name -ExpandProperty Exif
+    "filename.jpg" | Get-Exif | Select-Object Name -ExpandProperty Exif
+    Get-Item filename.jpg | Get-Exif | Select-Object Name -ExpandProperty Exif
 
-The returned FileInfo object contains all the exif properties:
+The returned FileInfo object contains Exif property containing all the exif properties:
 
     Manufacturer               : Apple
     Model                      : iPhone 11 Pro Max
@@ -37,9 +37,9 @@ The returned FileInfo object contains all the exif properties:
     DateandTimeDigitized       : 2/18/2020 4:57:02 PM
     ...
 
-Dates are [datetime] objects. Tested on MacOS with PowerShell 7.0.0-rc3
+Dates are [datetime] objects. Tested on MacOS with PowerShell 7.0.0
 
 ## Usage examples
 
-    > (Get-Item ./filename.jpeg | Get-Exif).DateandTimeOriginal.ToString("yyyy-MM-dd")
+    > (Get-Item ./filename.jpeg | Get-Exif).Exif.DateandTimeOriginal.ToString("yyyy-MM-dd")
     2020-02-18

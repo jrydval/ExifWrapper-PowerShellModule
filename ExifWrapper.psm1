@@ -25,37 +25,47 @@ function Get-Exif {
 
     begin { 
         Write-Debug "Get-Exif Begin"
-        Get-Command -Name "exif" -ErrorAction Stop
-     }
+        Get-Command -Name "exif" -ErrorAction Stop | Out-Null
+    }
 
     end { 
         Write-Debug "Get-Exif End"
-     }
+    }
 
     process {
         $paramSet = $PSCmdlet.ParameterSetName
         Write-Debug "Get-Exif - ParamSet: $paramSet, Parameters - Path: $Path, File: $File"
 
-        if( $paramSet -eq "File" ) {
+        if ( $paramSet -eq "File" ) {
             $Path = $File.FullName
-        } else {
+        }
+        else {
             $File = Get-Item $Path
         }
 
         Write-Debug "Get-Exif - after resolution - Path: $Path, File: $File"
         
-        (exif -m $Path) | ForEach-Object {
-            $name, $value = $_ -split "`t"
-            $name = $name -replace'[\(\)\s\-]', ''   
+        foreach ($f in $File) {
 
-            if($name.startsWith("DateandTime")) {
-                $value = Get-Date ($value -replace "^(.*?):(.*?):(.*?) ", "`$1.`$2.`$3 ")
+            $exif = [PSCustomObject]@{
+                PSTypeName = "Exif"
             }
 
-            Write-Debug "Get-Exif - Addind NoteProperty: $name = $value"
-            Add-Member -InputObject $File[0] -NotePropertyName $name -NotePropertyValue $value
-           }
-       $File
+            (exif -m $f.FullName) | ForEach-Object {
+                $name, $value = $_ -split "`t"
+                $name = $name -replace '[\(\)\s\-]', ''   
+
+                if ($name.startsWith("DateandTime")) {
+                    $value = Get-Date ($value -replace "^(.*?):(.*?):(.*?) ", "`$1.`$2.`$3 ")
+                }
+
+                Write-Debug "Get-Exif - Addind NoteProperty: $name = $value"
+
+                Add-Member -InputObject $exif -NotePropertyName $name -NotePropertyValue $value
+            }
+            Add-Member -InputObject $f -NotePropertyName "Exif" -NotePropertyValue $exif
+            $f
+        }
     }
 
 }
