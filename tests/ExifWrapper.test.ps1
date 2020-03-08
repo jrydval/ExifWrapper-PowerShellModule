@@ -19,11 +19,11 @@ Describe -Name "Attribute Tests" {
             $fe.Exif | Should -Not -BeNullOrEmpty
         }
         
-        It "Has two attribites" {
+        It "Has Apperture attribute" {
             $fe.Exif.Apperture | Should -Be "2.0"
         }
 
-        It "Has date as datetime type" {
+        It "Has DateandTime as datetime type" {
             $fe.Exif.DateandTimeOriginal | Should -HaveType [datetime]
         }
     }
