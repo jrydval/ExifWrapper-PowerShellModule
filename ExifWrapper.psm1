@@ -70,7 +70,7 @@ enum ExifId {
     RelatedImageWidth = 0x1001
     RelatedImageLength = 0x1002
     CFARepeatPatternDim = 0x828d
-    CFAPattern = 0x828e
+    CFAPattern2 = 0x828e
     BatteryLevel = 0x828f
     Copyright = 0x8298
     ExposureTime = 0x829a
@@ -125,7 +125,7 @@ enum ExifId {
     SensingMethod = 0xa217
     FileSource = 0xa300
     SceneType = 0xa301
-    CFAPattern2 = 0xa302
+    CFAPattern = 0xa302
     CustomRendered = 0xa401
     ExposureMode = 0xa402
     WhiteBalance = 0xa403
@@ -143,8 +143,6 @@ enum ExifId {
     PRINTImageMatching = 0xc4a5
     Padding = 0xea1c
 }
-
-
 
 function Get-Exif {
 
