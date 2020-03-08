@@ -14,14 +14,17 @@ Describe -Name "Attribute Tests" {
 
     Context "With 2 attributes" {
         $fe = Get-Exif "IMG.jpg" 
+
+        It "Has exif property" {
+            $fe.Exif | Should -Not -BeNullOrEmpty
+        }
         
         It "Has two attribites" {
-
-            $fe | Should -HaveCount 2
+            $fe.Exif.Apperture | Should -Be "2.0"
         }
 
         It "Has date as datetime type" {
-            $fe.DateandTimeOriginal | Should -HaveType [datetime]
+            $fe.Exif.DateandTimeOriginal | Should -HaveType [datetime]
         }
     }
 

@@ -51,6 +51,8 @@ function Get-Exif {
                 PSTypeName = "Exif"
             }
 
+            #$exif = @{}
+
             (exif -m $f.FullName) | ForEach-Object {
                 $name, $value = $_ -split "`t"
                 $name = $name -replace '[\(\)\s\-]', ''   
@@ -62,6 +64,7 @@ function Get-Exif {
                 Write-Debug "Get-Exif - Addind NoteProperty: $name = $value"
 
                 Add-Member -InputObject $exif -NotePropertyName $name -NotePropertyValue $value
+                #$exif.Add($name, $value)
             }
             Add-Member -InputObject $f -NotePropertyName "Exif" -NotePropertyValue $exif
             $f
