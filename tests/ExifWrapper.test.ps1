@@ -3,8 +3,9 @@ Import-Module (Join-Path ".." "ExifWrapper.psm1") -Force
 Describe -Name "Attribute Tests" {
 
     Mock -CommandName exif -ModuleName ExifWrapper -MockWith { 
-        "DateandTimeOriginal`t2020:01:02 01:02:03", 
-        "Apperture`t2.0" 
+        "0x9003`t2020:01:02 01:02:03", 
+        "0x829a`t2.0",
+        "Last line"
     }
     
     Mock -CommandName Get-Item -ModuleName ExifWrapper -MockWith { 
@@ -13,14 +14,14 @@ Describe -Name "Attribute Tests" {
 
 
     Context "With 2 attributes" {
-        $fe = Get-Exif "IMG.jpg" 
+        $fe = Get-Exif "img.jpg" 
 
         It "Has exif property" {
             $fe.Exif | Should -Not -BeNullOrEmpty
         }
         
-        It "Has Apperture attribute" {
-            $fe.Exif.Apperture | Should -Be "2.0"
+        It "Has ExposureTime attribute" {
+            $fe.Exif.ExposureTime | Should -Be "2.0"
         }
 
         It "Has DateandTime as datetime type" {
