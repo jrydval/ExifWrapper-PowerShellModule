@@ -63,7 +63,7 @@ function Get-Exif {
 
                 Write-Debug "Get-Exif - Addind NoteProperty: $name = $value"
 
-                Add-Member -InputObject $exif -NotePropertyName $name -NotePropertyValue $value
+                Add-Member -InputObject $exif -NotePropertyName $name -NotePropertyValue $value -Force
                 #$exif.Add($name, $value)
             }
             Add-Member -InputObject $f -NotePropertyName "Exif" -NotePropertyValue $exif
